@@ -2,3 +2,60 @@ var input = '()(((()())))()))()(())(()()()))))())(()((((()()()(()))())()((((((()
 
 var arr = input.split('');
 console.log( arr );
+
+//Question One
+var netMoveOne = 0;
+for(var i = 0; i < arr.length; i++){
+    if(arr[i] == "("){
+        netMoveOne++;
+    }else if(arr[i] == ")"){
+        netMoveOne--;
+    }
+}
+if(netMoveOne > 0){
+    console.log("The train is " + netMoveOne + " stations west");
+}else if(netMoveOne < 0){
+    console.log("The train is " + Math.abs(netMoveOne) + " stations east");
+}
+
+//Question 2
+var netMoveTwo = 0;
+for(var i = 0; i < arr.length; i++){
+    if(arr[i] == "("){
+        if(netMoveTwo < 0){
+            netMoveTwo++;
+        }
+    }else if(arr[i] == ")"){
+        netMoveTwo--;
+    }
+}
+if(netMoveTwo > 0){
+    console.log("The train is " + netMoveTwo + " stations west");
+}else if(netMoveTwo < 0){
+    console.log("The train is " + Math.abs(netMoveTwo) + " stations east");
+}
+
+//Question 3
+var netMoveThree = 0;
+for(var i = 0; i < arr.length; i++){
+    if(arr[i] == "("){
+        if(arr[i] == arr[i + 1]){
+            netMoveThree++;
+            i++;
+        }else{
+            netMoveThree++;
+        }
+    }else if(arr[i] == ")"){
+        if(arr[i] == arr[i + 1]){
+            netMoveThree--;
+            i++;
+        }else{
+            netMoveThree--;
+        }
+    }
+}
+if(netMoveThree > 0){
+    console.log("The train is " + netMoveThree + " stations west");
+}else if(netMoveThree < 0){
+    console.log("The train is " + Math.abs(netMoveThree) + " stations east");
+}
