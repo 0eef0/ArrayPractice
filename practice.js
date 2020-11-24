@@ -59,3 +59,48 @@ if(netMoveThree > 0){
 }else if(netMoveThree < 0){
     console.log("The train is " + Math.abs(netMoveThree) + " stations east");
 }
+
+//Question 4
+function chunk(array, size) {
+    const chunked_arr = [];
+    let index = 0;
+    while (index < array.length) {
+        chunked_arr.push(array.slice(index, size + index));
+        index += size;
+    }
+    return chunked_arr;
+}
+var fourArr = chunk(input, 4);
+
+var netMoveFour = 0;
+for(var i = 0; i < fourArr.length; i++){
+    var currentMove = 0;
+    if(fourArr[i][0] == "("){
+        if(fourArr[i][1] == "("){
+            currentMove += 4;
+        }
+        if(fourArr[i][2] == "("){
+            currentMove += 2;
+        }
+        if(fourArr[i][3] == "("){
+            currentMove++;
+        } 
+        netMoveFour += currentMove;
+    }else if(fourArr[i][0] == ")"){
+        if(fourArr[i][1] == "("){
+            currentMove += 4;
+        }
+        if(fourArr[i][2] == "("){
+            currentMove += 2;
+        }
+        if(fourArr[i][3] == "("){
+            currentMove++;
+        } 
+        netMoveFour -= currentMove;
+    }
+}
+if(netMoveFour > 0){
+    console.log("The train is " + netMoveFour + " stations west");
+}else if(netMoveFour < 0){
+    console.log("The train is " + Math.abs(netMoveFour) + " stations east");
+}
